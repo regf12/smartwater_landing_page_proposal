@@ -1,0 +1,693 @@
+<!DOCTYPE html><html lang="es" class="scroll-smooth"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartWater — Control total para tu distribuidora de agua</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'cyan-accent': '#00A8C6',
+        'cyan-deep': '#0077B6',
+        'navy-footer': '#0B192C',
+        'on-navy-footer': '#F1F5F9',
+        'success': '#15803D',
+        'on-success': '#FFFFFF',
+        'light-primary': '#0050AD',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#1668D6',
+        'light-on-primary-container': '#E9EEFF',
+        'light-secondary': '#00687B',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#62DEFE',
+        'light-on-secondary-container': '#006173',
+        'light-tertiary': '#8E3A00',
+        'light-on-tertiary': '#FFFFFF',
+        'light-tertiary-container': '#B54C00',
+        'light-on-tertiary-container': '#FFEBE2',
+        'light-error': '#BA1A1A',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FFDAD6',
+        'light-on-error-container': '#93000A',
+        'light-background': '#F9F9FF',
+        'light-on-background': '#111C2D',
+        'light-surface': '#F9F9FF',
+        'light-surface-dim': '#CFDAF2',
+        'light-surface-bright': '#F9F9FF',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F0F3FF',
+        'light-surface-container': '#E7EEFF',
+        'light-surface-container-high': '#DEE8FF',
+        'light-surface-container-highest': '#D8E3FB',
+        'light-on-surface': '#111C2D',
+        'light-surface-variant': '#DEE2F2',
+        'light-on-surface-variant': '#424753',
+        'light-outline': '#727785',
+        'light-outline-variant': '#C2C6D5',
+        'light-inverse-surface': '#263143',
+        'light-inverse-on-surface': '#ECF1FF',
+        'light-inverse-primary': '#ADC6FF',
+        'light-shadow': '#000000',
+        'light-scrim': '#000000',
+        'dark-primary': '#ADC6FF',
+        'dark-on-primary': '#002E69',
+        'dark-primary-container': '#1668D6',
+        'dark-on-primary-container': '#E9EEFF',
+        'dark-secondary': '#58D6F5',
+        'dark-on-secondary': '#003641',
+        'dark-secondary-container': '#00A7C5',
+        'dark-on-secondary-container': '#003641',
+        'dark-tertiary': '#FFB692',
+        'dark-on-tertiary': '#552000',
+        'dark-tertiary-container': '#B54C00',
+        'dark-on-tertiary-container': '#FFEBE2',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000A',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#081425',
+        'dark-on-background': '#D8E3FB',
+        'dark-surface': '#081425',
+        'dark-surface-dim': '#081425',
+        'dark-surface-bright': '#2F3A4C',
+        'dark-surface-container-lowest': '#040E1F',
+        'dark-surface-container-low': '#111C2D',
+        'dark-surface-container': '#152031',
+        'dark-surface-container-high': '#1F2A3C',
+        'dark-surface-container-highest': '#2A3548',
+        'dark-on-surface': '#D8E3FB',
+        'dark-surface-variant': '#424753',
+        'dark-on-surface-variant': '#C2C6D5',
+        'dark-outline': '#8C909F',
+        'dark-outline-variant': '#424753',
+        'dark-inverse-surface': '#D8E3FB',
+        'dark-inverse-on-surface': '#263143',
+        'dark-inverse-primary': '#005AC2',
+        'dark-shadow': '#000000',
+        'dark-scrim': '#000000',
+      },
+      borderRadius: {
+        'sm': '4px',
+        'DEFAULT': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '24px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section-sm': '48px',
+        'section-lg': '80px',
+        'page-margin': '24px',
+      },
+      fontFamily: {
+        'display': ['"Red Hat Display"', 'sans-serif'],
+        'headline': ['"Red Hat Display"', 'sans-serif'],
+        'title': ['"Radio Canada Big"', 'sans-serif'],
+        'body': ['"Radio Canada Big"', 'sans-serif'],
+        'label': ['"Radio Canada Big"', 'sans-serif'],
+        'mono': ['"Source Code Pro"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['48px', { lineHeight: '56px', letterSpacing: '-0.75px', fontWeight: '700' }],
+        'display-lg-mobile': ['32px', { lineHeight: '38px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'headline-lg': ['36px', { lineHeight: '44px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'headline-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-md': ['28px', { lineHeight: '36px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-sm': ['22px', { lineHeight: '28px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-lg': ['18px', { lineHeight: '26px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['18px', { lineHeight: '28px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['15px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['13px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.2px', fontWeight: '600' }],
+        'label-sm': ['11px', { lineHeight: '16px', letterSpacing: '0.3px', fontWeight: '500' }],
+        'mono-sm': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '150ms',
+        'surface-enter': '250ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:wght@400;500;600;700&amp;family=Red+Hat+Display:wght@500;600;700;800&amp;family=Source+Code+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      box-sizing: content-box;
+      overflow: hidden;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-light-surface text-light-on-surface font-body antialiased min-h-[1024px] flex flex-col" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+  <!-- Top Navigation -->
+  <header class="sticky top-0 z-40 bg-light-surface-container-lowest/95 border-b border-light-outline-variant/50">
+    <div class="max-w-7xl mx-auto px-page-margin md:px-12 h-20 flex items-center justify-between gap-6">
+      <a href="#" class="flex items-center gap-2.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-light-primary rounded">
+        <div class="w-9 h-9 rounded-md bg-light-primary flex items-center justify-center text-light-on-primary shadow-sm">
+          <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">water_drop</span>
+        </div>
+        <span data-design-text-token="title-lg" class="font-headline text-title-lg text-light-on-surface tracking-tight">SmartWater</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8" aria-label="Navegación principal">
+        <a href="#modulos" data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-surface-variant hover:text-light-primary transition-colors duration-state-change">Módulos</a>
+        <a href="#como-funciona" data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-surface-variant hover:text-light-primary transition-colors duration-state-change">Cómo funciona</a>
+        <a href="#programa-beta" data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-surface-variant hover:text-light-primary transition-colors duration-state-change">Programa Beta</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <!-- COMPONENT: button-secondary -->
+        <a href="index.html" data-component-id="button-secondary" data-component-type="button" data-component-variant="secondary" class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-primary font-label text-label-lg hover:bg-light-surface-container-low focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-light-primary transition-colors duration-state-change ease-state-change">
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_back</span>
+          <span data-design-text-token="label-lg">Volver al menú</span>
+        </a>
+        <!-- COMPONENT: button-primary -->
+        <a href="#programa-beta" data-component-id="button-primary" data-component-type="button" data-component-variant="primary" class="inline-flex items-center justify-center px-6 py-3 rounded bg-light-primary text-light-on-primary font-label text-label-lg shadow-sm hover:bg-light-primary-container focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-light-primary transition-colors duration-state-change ease-state-change">
+          <span data-design-text-token="label-lg">Solicitar acceso Beta</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1">
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-b from-light-surface-container-low/70 via-light-surface to-light-surface-container-lowest py-14 md:py-20 border-b border-light-outline-variant/40">
+      <div class="max-w-7xl mx-auto px-page-margin md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+        <!-- Hero Copy -->
+        <div class="lg:col-span-6 flex flex-col items-start gap-6">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-light-surface-container border border-light-outline-variant/60">
+            <span class="material-symbols-outlined text-[16px] text-light-primary" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">water_drop</span>
+            <span data-design-text-token="label-md" class="font-label text-label-md text-light-primary">Acceso Anticipado — Programa Beta para Distribuidoras</span>
+          </div>
+
+          <!-- COMPONENT: typography-display -->
+          <h1 data-component-id="typography-display" data-component-type="typography" data-component-variant="display" data-design-text-token="display-lg" class="font-display text-display-lg-mobile md:text-display-lg text-light-on-surface text-balance">Control total de pedidos, rutas optimizadas, inventario y finanzas de tu distribuidora de agua</h1>
+
+          <!-- COMPONENT: typography-body -->
+          <p data-component-id="typography-body" data-component-type="typography" data-component-variant="body" data-design-text-token="body-lg" class="font-body text-body-lg text-light-on-surface-variant text-pretty max-w-prose">Digitaliza tu planta con un panel administrativo web integral con facturación electrónica y una app móvil exclusiva para que tus clientes pidan agua sin fricción.</p>
+
+          <div class="flex flex-col items-start gap-3 pt-1">
+            <!-- COMPONENT: button-with-icon -->
+            <a href="#programa-beta" data-component-id="button-with-icon" data-component-type="button" data-component-variant="with-icon" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded bg-light-primary text-light-on-primary font-label text-label-lg shadow-md hover:bg-light-primary-container focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-light-primary transition-colors duration-state-change ease-state-change">
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">rocket_launch</span>
+              <span data-design-text-token="label-lg">Solicitar Demo / Acceso Beta</span>
+            </a>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">Configuración personalizada • Cupos limitados para empresas piloto</p>
+          </div>
+        </div>
+
+        <!-- Hero Device Mockups (Tablet Dashboard + Mobile Customer App) -->
+        <div class="lg:col-span-6 relative pb-10">
+          <!-- Tablet Frame -->
+          <div class="bg-navy-footer rounded-xl p-2.5 shadow-xl border border-light-outline-variant/30 mr-8 sm:mr-20">
+            <div class="bg-light-surface-container-lowest rounded-lg overflow-hidden grid grid-cols-12 min-h-72">
+              <!-- Tablet Sidebar -->
+              <div class="col-span-3 bg-light-primary text-light-on-primary p-3 flex flex-col gap-3">
+                <div class="flex items-center gap-1.5 pb-2 border-b border-light-on-primary/20">
+                  <span class="material-symbols-outlined text-[16px]" aria-hidden="true">water_drop</span>
+                  <span data-design-text-token="label-md" class="font-label text-label-md">SmartWater</span>
+                </div>
+                <div class="flex flex-col gap-1.5">
+                  <div class="flex items-center gap-1.5 px-2 py-1.5 rounded bg-light-on-primary/20">
+                    <span class="material-symbols-outlined text-[14px]" aria-hidden="true">dashboard</span>
+                    <span data-design-text-token="label-sm" class="font-label text-label-sm">Panel</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 px-2 py-1 text-light-on-primary/90">
+                    <span class="material-symbols-outlined text-[14px]" aria-hidden="true">route</span>
+                    <span data-design-text-token="label-sm" class="font-label text-label-sm">Rutas</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 px-2 py-1 text-light-on-primary/90">
+                    <span class="material-symbols-outlined text-[14px]" aria-hidden="true">local_shipping</span>
+                    <span data-design-text-token="label-sm" class="font-label text-label-sm">Flota</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 px-2 py-1 text-light-on-primary/90">
+                    <span class="material-symbols-outlined text-[14px]" aria-hidden="true">receipt_long</span>
+                    <span data-design-text-token="label-sm" class="font-label text-label-sm">Facturas</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tablet Main Content -->
+              <div class="col-span-9 p-4 bg-light-surface flex flex-col gap-3">
+                <!-- Top KPIs -->
+                <div class="grid grid-cols-3 gap-2">
+                  <div class="bg-light-surface-container-lowest p-2.5 rounded border border-light-outline-variant/50">
+                    <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant block">Ventas hoy</span>
+                    <span data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface tabular-nums">$48,250</span>
+                  </div>
+                  <div class="bg-light-surface-container-lowest p-2.5 rounded border border-light-outline-variant/50">
+                    <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant block">Pedidos</span>
+                    <span data-design-text-token="title-md" class="font-title text-title-md text-light-primary tabular-nums">312</span>
+                  </div>
+                  <div class="bg-light-surface-container-lowest p-2.5 rounded border border-light-outline-variant/50">
+                    <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant block">A tiempo</span>
+                    <span data-design-text-token="title-md" class="font-title text-title-md text-success tabular-nums">98.4%</span>
+                  </div>
+                </div>
+
+                <!-- Chart + Map Row -->
+                <div class="grid grid-cols-12 gap-2.5 flex-1">
+                  <!-- Bar Chart Card -->
+                  <div class="col-span-6 bg-light-surface-container-lowest p-3 rounded border border-light-outline-variant/50 flex flex-col justify-between">
+                    <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Entregas semanales</span>
+                    <svg viewBox="0 0 160 72" class="w-full h-20 mt-2" aria-label="Gráfico de entregas semanales">
+                      <rect x="8" y="36" width="14" height="32" rx="2" fill="#D8E3FB"></rect>
+                      <rect x="30" y="24" width="14" height="44" rx="2" fill="#D8E3FB"></rect>
+                      <rect x="52" y="18" width="14" height="50" rx="2" fill="#1668D6"></rect>
+                      <rect x="74" y="28" width="14" height="40" rx="2" fill="#D8E3FB"></rect>
+                      <rect x="96" y="12" width="14" height="56" rx="2" fill="#0050AD"></rect>
+                      <rect x="118" y="20" width="14" height="48" rx="2" fill="#00A8C6"></rect>
+                      <rect x="140" y="10" width="14" height="58" rx="2" fill="#0050AD"></rect>
+                    </svg>
+                  </div>
+
+                  <!-- Live Route Map Card -->
+                  <div class="col-span-6 bg-light-surface-container-low p-3 rounded border border-light-outline-variant/50 flex flex-col justify-between">
+                    <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Ruta Centro #04</span>
+                    <svg viewBox="0 0 150 72" class="w-full h-20 mt-1" aria-label="Mapa de ruta en vivo">
+                      <path d="M12 16 L140 16 M12 36 L140 36 M12 56 L140 56 M40 6 L40 66 M90 6 L90 66" stroke="#C2C6D5" stroke-width="1" stroke-dasharray="3 3" fill="none"></path>
+                      <path d="M20 56 L40 36 L90 36 L124 18" stroke="#0050AD" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+                      <circle cx="20" cy="56" r="4.5" fill="#00A8C6"></circle>
+                      <circle cx="40" cy="36" r="4" fill="#0050AD"></circle>
+                      <circle cx="90" cy="36" r="4" fill="#0050AD"></circle>
+                      <circle cx="124" cy="18" r="5" fill="#15803D"></circle>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Overlapping Smartphone Frame -->
+          <div class="w-44 sm:w-48 bg-navy-footer rounded-xl p-2 shadow-2xl border border-light-outline-variant/40 absolute -bottom-2 right-0 sm:right-2">
+            <div class="bg-light-surface-container-lowest rounded-lg p-3 flex flex-col gap-2.5">
+              <div class="flex items-center justify-between">
+                <span data-design-text-token="label-md" class="font-label text-label-md text-light-primary">App Cliente</span>
+                <span class="material-symbols-outlined text-[16px] text-light-primary" aria-hidden="true">shopping_bag</span>
+              </div>
+              <div class="bg-light-surface-container-low rounded p-2.5 flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded bg-light-surface-container flex items-center justify-center text-light-primary shrink-0">
+                  <span class="material-symbols-outlined text-[20px]" aria-hidden="true">water_bottle</span>
+                </div>
+                <div class="flex flex-col">
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Garrafón 20L</span>
+                  <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-light-primary tabular-nums">$45.00</span>
+                </div>
+              </div>
+              <div class="bg-light-surface-container-low rounded p-2.5 flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded bg-light-surface-container flex items-center justify-center text-light-secondary shrink-0">
+                  <span class="material-symbols-outlined text-[20px]" aria-hidden="true">local_drink</span>
+                </div>
+                <div class="flex flex-col">
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Pack 6x 1.5L</span>
+                  <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-light-primary tabular-nums">$72.00</span>
+                </div>
+              </div>
+              <div class="w-full py-2 rounded bg-light-primary text-light-on-primary text-center">
+                <span data-design-text-token="label-md" class="font-label text-label-md">Pedir agua ahora</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Split Feature Banner: Delivery Photo + Route Optimization Comparison -->
+    <section class="grid grid-cols-1 lg:grid-cols-2">
+      <!-- Left: Delivery Photo with Scrim -->
+      <div class="relative min-h-80 lg:min-h-96 overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/aida/ALJJyrDcv2pvBdNrjmG6f-kirCXVI7cVMgSSjquaczO3e1H0PqFra2rSVYAVXSYZFjw9oqHz-LpmUGqSVnCAezs7rxVRqxL0BhW0WcDalPyv5wG0PNHhG6ujzPOEb-NqJLoTOXpXQS_T6I-psGj86wrX8nZivT6_k9t_1mBFGGLVwUFPItXzHOMGs7lUzOlkGEYK9u8aMOu9RSUd2Zzjr8M-01Symrb94BSih59rTd3NflsaSYTBOO3I3PFB" alt="Repartidor de SmartWater entregando garrafones de agua de 20 litros" class="w-full h-full object-cover object-center absolute inset-0">
+        <div class="absolute inset-0 bg-gradient-to-b from-navy-footer/85 via-navy-footer/30 to-transparent p-8 md:p-12 flex flex-col justify-start">
+          <h2 data-design-text-token="headline-lg" class="font-headline text-headline-lg-mobile md:text-headline-lg text-on-navy-footer text-balance max-w-md">Eficiencia operativa en cada gota</h2>
+        </div>
+      </div>
+
+      <!-- Right: Aqua Route Optimization Card -->
+      <div class="bg-gradient-to-br from-light-secondary to-cyan-deep text-light-on-secondary p-8 md:p-12 flex flex-col items-center justify-center gap-6">
+        <div class="text-center flex flex-col gap-1.5">
+          <h2 data-design-text-token="headline-md" class="font-headline text-headline-md text-light-on-secondary">Optimización Inteligente de Rutas</h2>
+          <p data-design-text-token="body-md" class="font-body text-body-md text-light-on-secondary">Reduce tiempos de entrega y gasto de combustible hasta un 28%.</p>
+        </div>
+
+        <div class="w-full max-w-lg bg-light-surface-container-lowest text-light-on-surface rounded-lg p-5 shadow-lg">
+          <div class="grid grid-cols-1 sm:grid-cols-11 gap-4 items-center">
+            <!-- Before: Disordered -->
+            <div class="sm:col-span-5 flex flex-col gap-2">
+              <div class="bg-light-surface-container-low rounded p-2 border border-light-outline-variant/60">
+                <svg viewBox="0 0 160 96" class="w-full h-24" aria-label="Ruta desordenada antes de SmartWater">
+                  <path d="M24 20 L132 74 L30 78 L128 22 L76 14 L82 82 L24 20" stroke="#BA1A1A" stroke-width="2" fill="none" opacity="0.8"></path>
+                  <path d="M24 20 L128 22 L82 82 L132 74" stroke="#E56F2A" stroke-width="1.5" stroke-dasharray="3 2" fill="none"></path>
+                  <circle cx="24" cy="20" r="4" fill="#111C2D"></circle>
+                  <circle cx="132" cy="74" r="4" fill="#111C2D"></circle>
+                  <circle cx="30" cy="78" r="4" fill="#111C2D"></circle>
+                  <circle cx="128" cy="22" r="4" fill="#111C2D"></circle>
+                  <circle cx="76" cy="14" r="4" fill="#111C2D"></circle>
+                  <circle cx="82" cy="82" r="4" fill="#111C2D"></circle>
+                </svg>
+              </div>
+              <div class="flex items-center justify-center gap-1.5">
+                <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface-variant">Antes:</span>
+                <span data-design-text-token="label-md" class="font-label text-label-md text-light-error">Desordenado</span>
+                <span class="material-symbols-outlined text-[16px] text-light-error" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">cancel</span>
+              </div>
+            </div>
+
+            <!-- Arrow -->
+            <div class="sm:col-span-1 flex items-center justify-center">
+              <span class="material-symbols-outlined text-[24px] text-light-primary rotate-90 sm:rotate-0" aria-hidden="true">arrow_forward</span>
+            </div>
+
+            <!-- After: Optimized -->
+            <div class="sm:col-span-5 flex flex-col gap-2">
+              <div class="bg-light-surface-container-low rounded p-2 border border-light-outline-variant/60">
+                <svg viewBox="0 0 160 96" class="w-full h-24" aria-label="Ruta optimizada con SmartWater">
+                  <path d="M24 20 L76 14 L128 22 L132 74 L82 82 L30 78 Z" stroke="#15803D" stroke-width="2.5" stroke-linejoin="round" fill="none"></path>
+                  <circle cx="24" cy="20" r="4" fill="#0050AD"></circle>
+                  <circle cx="76" cy="14" r="4" fill="#0050AD"></circle>
+                  <circle cx="128" cy="22" r="4" fill="#0050AD"></circle>
+                  <circle cx="132" cy="74" r="4" fill="#0050AD"></circle>
+                  <circle cx="82" cy="82" r="4" fill="#0050AD"></circle>
+                  <circle cx="30" cy="78" r="4" fill="#0050AD"></circle>
+                </svg>
+              </div>
+              <div class="flex items-center justify-center gap-1.5">
+                <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface-variant">Ahora:</span>
+                <span data-design-text-token="label-md" class="font-label text-label-md text-success">Optimizado</span>
+                <span class="material-symbols-outlined text-[16px] text-success" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">check_circle</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="como-funciona" class="py-16 md:py-20 bg-light-surface-container-lowest border-b border-light-outline-variant/40">
+      <div class="max-w-7xl mx-auto px-page-margin md:px-12 flex flex-col gap-10">
+        <div class="text-center max-w-2xl mx-auto flex flex-col gap-2">
+          <!-- COMPONENT: typography-headline -->
+          <h2 data-component-id="typography-headline" data-component-type="typography" data-component-variant="headline" data-design-text-token="headline-lg" class="font-headline text-headline-lg-mobile md:text-headline-lg text-light-on-surface text-balance">Cómo funciona</h2>
+          <p data-design-text-token="body-md" class="font-body text-body-md text-light-on-surface-variant">Digitaliza cada etapa de tu planta purificadora y flota de reparto en un flujo continuo.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
+          <!-- Step 1 -->
+          <article data-component-id="card-outlined" data-component-type="card" data-component-variant="outlined" class="bg-light-surface rounded-md border border-light-outline-variant/70 p-5 flex flex-col items-center text-center gap-2.5 h-full">
+            <div class="w-10 h-10 rounded-full bg-light-surface-container text-light-primary flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">settings</span>
+            </div>
+            <h3 data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-surface">Configura tu operación</h3>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant text-balance">Carga zonas, listas de precios y turnos.</p>
+          </article>
+
+          <!-- Step 2 -->
+          <article data-component-id="card-outlined" data-component-type="card" data-component-variant="outlined" class="bg-light-surface rounded-md border border-light-outline-variant/70 p-5 flex flex-col items-center text-center gap-2.5 h-full">
+            <div class="w-10 h-10 rounded-full bg-light-surface-container text-light-primary flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">local_shipping</span>
+            </div>
+            <h3 data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-surface">Activa repartidores</h3>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant text-balance">Asigna vehículos y rutas diarias.</p>
+          </article>
+
+          <!-- Step 3 -->
+          <article data-component-id="card-outlined" data-component-type="card" data-component-variant="outlined" class="bg-light-surface rounded-md border border-light-outline-variant/70 p-5 flex flex-col items-center text-center gap-2.5 h-full">
+            <div class="w-10 h-10 rounded-full bg-light-surface-container text-light-primary flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">location_on</span>
+            </div>
+            <h3 data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-surface">Supervisa en vivo</h3>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant text-balance">Sigue cada entrega por GPS.</p>
+          </article>
+
+          <!-- Step 4 -->
+          <article data-component-id="card-outlined" data-component-type="card" data-component-variant="outlined" class="bg-light-surface rounded-md border border-light-outline-variant/70 p-5 flex flex-col items-center text-center gap-2.5 h-full">
+            <div class="w-10 h-10 rounded-full bg-light-surface-container text-light-primary flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">inventory_2</span>
+            </div>
+            <h3 data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-surface">Control de envases</h3>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant text-balance">Registra garrafones llenos y vacíos.</p>
+          </article>
+
+          <!-- Step 5 -->
+          <article data-component-id="card-outlined" data-component-type="card" data-component-variant="outlined" class="bg-light-surface rounded-md border border-light-outline-variant/70 p-5 flex flex-col items-center text-center gap-2.5 h-full">
+            <div class="w-10 h-10 rounded-full bg-light-surface-container text-light-primary flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">smartphone</span>
+            </div>
+            <h3 data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-surface">Ventas y App</h3>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant text-balance">Recibe pedidos móviles sin llamadas.</p>
+          </article>
+
+          <!-- Step 6 -->
+          <article data-component-id="card-outlined" data-component-type="card" data-component-variant="outlined" class="bg-light-surface rounded-md border border-light-outline-variant/70 p-5 flex flex-col items-center text-center gap-2.5 h-full">
+            <div class="w-10 h-10 rounded-full bg-light-surface-container text-light-primary flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">receipt_long</span>
+            </div>
+            <h3 data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-surface">Facturación</h3>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant text-balance">Emite comprobantes fiscales al instante.</p>
+          </article>
+
+          <!-- Step 7 -->
+          <article data-component-id="card-outlined" data-component-type="card" data-component-variant="outlined" class="bg-light-surface rounded-md border border-light-outline-variant/70 p-5 flex flex-col items-center text-center gap-2.5 h-full">
+            <div class="w-10 h-10 rounded-full bg-light-surface-container text-light-primary flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">account_balance_wallet</span>
+            </div>
+            <h3 data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-surface">Cuentas por cobrar</h3>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant text-balance">Controla créditos y abonos diarios.</p>
+          </article>
+
+          <!-- Step 8 -->
+          <article data-component-id="card-outlined" data-component-type="card" data-component-variant="outlined" class="bg-light-surface rounded-md border border-light-outline-variant/70 p-5 flex flex-col items-center text-center gap-2.5 h-full">
+            <div class="w-10 h-10 rounded-full bg-light-surface-container text-light-primary flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">bar_chart</span>
+            </div>
+            <h3 data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-surface">Reportes</h3>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant text-balance">Consulta ingresos y métricas clave.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Features & Modules Section -->
+    <section id="modulos" class="py-16 md:py-20 bg-light-surface">
+      <div class="max-w-7xl mx-auto px-page-margin md:px-12 flex flex-col gap-12">
+        <div class="text-center max-w-2xl mx-auto flex flex-col gap-2">
+          <h2 data-design-text-token="headline-lg" class="font-headline text-headline-lg-mobile md:text-headline-lg text-light-on-surface text-balance">Módulos y Funciones Clave</h2>
+          <p data-design-text-token="body-md" class="font-body text-body-md text-light-on-surface-variant">Todo lo que tu distribuidora necesita en un solo lugar.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+          <!-- Module 1 -->
+          <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-6 shadow-sm flex flex-col gap-3 h-full">
+            <div class="w-11 h-11 rounded bg-light-surface-container-low text-light-primary flex items-center justify-center">
+              <span class="material-symbols-outlined text-[24px]" aria-hidden="true">person_pin_circle</span>
+            </div>
+            <header>
+              <h3 data-design-text-token="title-lg" class="font-headline text-title-lg text-light-on-surface text-balance">Clientes con Ubicación GPS</h3>
+            </header>
+            <p data-design-text-token="body-md" class="font-body text-body-md text-light-on-surface-variant">Registra domicilios, comercios y puntos de entrega exactos con historial de consumo y precios personalizados.</p>
+          </article>
+
+          <!-- Module 2 -->
+          <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-6 shadow-sm flex flex-col gap-3 h-full">
+            <div class="w-11 h-11 rounded bg-light-surface-container-low text-light-primary flex items-center justify-center">
+              <span class="material-symbols-outlined text-[24px]" aria-hidden="true">route</span>
+            </div>
+            <header>
+              <h3 data-design-text-token="title-lg" class="font-headline text-title-lg text-light-on-surface text-balance">Optimización de Rutas</h3>
+            </header>
+            <p data-design-text-token="body-md" class="font-body text-body-md text-light-on-surface-variant">Ordena automáticamente las paradas de cada unidad para atender más clientes en menos tiempo y ahorrar combustible.</p>
+          </article>
+
+          <!-- Module 3 -->
+          <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-6 shadow-sm flex flex-col gap-3 h-full">
+            <div class="w-11 h-11 rounded bg-light-surface-container-low text-light-primary flex items-center justify-center">
+              <span class="material-symbols-outlined text-[24px]" aria-hidden="true">local_shipping</span>
+            </div>
+            <header>
+              <h3 data-design-text-token="title-lg" class="font-headline text-title-lg text-light-on-surface text-balance">Monitoreo en Vivo de Flota</h3>
+            </header>
+            <p data-design-text-token="body-md" class="font-body text-body-md text-light-on-surface-variant">Visualiza el avance de cada ruta en tiempo real, entregas completadas, incidencias y control de envases retornables.</p>
+          </article>
+
+          <!-- Module 4 -->
+          <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-6 shadow-sm flex flex-col gap-3 h-full">
+            <div class="w-11 h-11 rounded bg-light-surface-container-low text-light-primary flex items-center justify-center">
+              <span class="material-symbols-outlined text-[24px]" aria-hidden="true">shopping_cart</span>
+            </div>
+            <header>
+              <h3 data-design-text-token="title-lg" class="font-headline text-title-lg text-light-on-surface text-balance">Ventas y App de Pedidos</h3>
+            </header>
+            <p data-design-text-token="body-md" class="font-body text-body-md text-light-on-surface-variant">Tus clientes solicitan garrafones o recargas en dos toques desde la app móvil, sin depender de llamadas ni mensajes perdidos.</p>
+          </article>
+
+          <!-- Module 5 -->
+          <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-6 shadow-sm flex flex-col gap-3 h-full">
+            <div class="w-11 h-11 rounded bg-light-surface-container-low text-light-primary flex items-center justify-center">
+              <span class="material-symbols-outlined text-[24px]" aria-hidden="true">receipt_long</span>
+            </div>
+            <header>
+              <h3 data-design-text-token="title-lg" class="font-headline text-title-lg text-light-on-surface text-balance">Facturación y Finanzas</h3>
+            </header>
+            <p data-design-text-token="body-md" class="font-body text-body-md text-light-on-surface-variant">Emite comprobantes fiscales automáticamente, realiza cortes de caja por repartidor y controla ingresos y gastos diarios.</p>
+          </article>
+
+          <!-- Module 6 -->
+          <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-6 shadow-sm flex flex-col gap-3 h-full">
+            <div class="w-11 h-11 rounded bg-light-surface-container-low text-light-primary flex items-center justify-center">
+              <span class="material-symbols-outlined text-[24px]" aria-hidden="true">payments</span>
+            </div>
+            <header>
+              <h3 data-design-text-token="title-lg" class="font-headline text-title-lg text-light-on-surface text-balance">Cuentas por Cobrar y Pagar</h3>
+            </header>
+            <p data-design-text-token="body-md" class="font-body text-body-md text-light-on-surface-variant">Administra créditos a clientes comerciales, recordatorios de pago y saldos pendientes con proveedores sin hojas de cálculo.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beta Registration Form Section -->
+    <section id="programa-beta" class="bg-gradient-to-r from-light-secondary to-cyan-deep py-16 md:py-20 px-page-margin">
+      <div class="max-w-3xl mx-auto bg-light-surface-container-lowest rounded-xl p-8 md:p-10 shadow-xl border border-light-outline-variant/40">
+        <div class="text-center flex flex-col gap-2 mb-8">
+          <span data-design-text-token="label-md" class="font-label text-label-md text-light-secondary">Formulario de Registro Beta</span>
+          <h2 data-design-text-token="headline-md" class="font-headline text-headline-md text-light-on-surface">Únete al Programa Beta de SmartWater</h2>
+          <p data-design-text-token="body-md" class="font-body text-body-md text-light-on-surface-variant">Déjanos tus datos y nuestro equipo configurará una demo personalizada para tu planta.</p>
+        </div>
+
+        <form id="beta-form" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- COMPONENT: input-field-text -->
+          <label data-component-id="input-field-text" data-component-type="input-field" data-component-variant="text" class="flex flex-col gap-1.5">
+            <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Nombre completo</span>
+            <input type="text" required placeholder="Ej. Carlos Mendoza" class="w-full rounded border border-light-outline-variant bg-light-surface-container-lowest px-3.5 py-2.5 text-body-md text-light-on-surface placeholder:text-light-outline focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 focus:outline-none transition-colors duration-state-change">
+          </label>
+
+          <!-- COMPONENT: input-field-text -->
+          <label data-component-id="input-field-text" data-component-type="input-field" data-component-variant="text" class="flex flex-col gap-1.5">
+            <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Nombre de la distribuidora</span>
+            <input type="text" required placeholder="Ej. Purificadora Agua Clara" class="w-full rounded border border-light-outline-variant bg-light-surface-container-lowest px-3.5 py-2.5 text-body-md text-light-on-surface placeholder:text-light-outline focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 focus:outline-none transition-colors duration-state-change">
+          </label>
+
+          <!-- COMPONENT: input-field-text -->
+          <label data-component-id="input-field-text" data-component-type="input-field" data-component-variant="text" class="flex flex-col gap-1.5">
+            <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Ciudad</span>
+            <input type="text" required placeholder="Ej. Monterrey, Nuevo León" class="w-full rounded border border-light-outline-variant bg-light-surface-container-lowest px-3.5 py-2.5 text-body-md text-light-on-surface placeholder:text-light-outline focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 focus:outline-none transition-colors duration-state-change">
+          </label>
+
+          <!-- COMPONENT: input-field-text -->
+          <label data-component-id="input-field-text" data-component-type="input-field" data-component-variant="text" class="flex flex-col gap-1.5">
+            <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Número de vehículos</span>
+            <input type="number" min="1" placeholder="Ej. 6 camiones" class="w-full rounded border border-light-outline-variant bg-light-surface-container-lowest px-3.5 py-2.5 text-body-md text-light-on-surface placeholder:text-light-outline focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 focus:outline-none transition-colors duration-state-change">
+          </label>
+
+          <!-- COMPONENT: input-field-text -->
+          <label data-component-id="input-field-text" data-component-type="input-field" data-component-variant="text" class="flex flex-col gap-1.5">
+            <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Cantidad de repartidores</span>
+            <input type="number" min="1" placeholder="Ej. 10 repartidores" class="w-full rounded border border-light-outline-variant bg-light-surface-container-lowest px-3.5 py-2.5 text-body-md text-light-on-surface placeholder:text-light-outline focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 focus:outline-none transition-colors duration-state-change">
+          </label>
+
+          <!-- COMPONENT: input-field-icon -->
+          <label data-component-id="input-field-icon" data-component-type="input-field" data-component-variant="with-icon" class="flex flex-col gap-1.5">
+            <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Teléfono / WhatsApp</span>
+            <div class="relative flex items-center">
+              <span class="material-symbols-outlined text-[18px] text-light-outline absolute left-3 pointer-events-none" aria-hidden="true">call</span>
+              <input type="tel" inputmode="tel" required placeholder="+52 81 1234 5678" class="w-full rounded border border-light-outline-variant bg-light-surface-container-lowest pl-10 pr-3.5 py-2.5 text-body-md text-light-on-surface placeholder:text-light-outline focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 focus:outline-none transition-colors duration-state-change">
+            </div>
+          </label>
+
+          <div class="md:col-span-2 pt-2 flex flex-col items-center gap-4">
+            <!-- COMPONENT: button-primary -->
+            <button data-component-id="button-primary" data-component-type="button" data-component-variant="primary" type="submit" class="w-full inline-flex items-center justify-center px-6 py-3 rounded bg-light-primary text-light-on-primary font-label text-label-lg shadow-sm hover:bg-light-primary-container focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-light-primary transition-colors duration-state-change ease-state-change">
+              <span data-design-text-token="label-lg">Solicitar mi cupo en la Beta</span>
+            </button>
+
+            <a href="#programa-beta" class="inline-flex items-center gap-1.5 text-light-secondary hover:text-light-primary transition-colors duration-state-change">
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">chat</span>
+              <span data-design-text-token="label-lg" class="font-label text-label-lg underline underline-offset-4">O escríbenos directo por WhatsApp</span>
+            </a>
+          </div>
+        </form>
+
+        <!-- Form Confirmation Message (hidden by default) -->
+        <div id="beta-confirmation" class="hidden mt-6 p-4 rounded-md bg-light-surface-container-low border border-success/40 flex items-center gap-3">
+          <span class="material-symbols-outlined text-[24px] text-success shrink-0" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">check_circle</span>
+          <div class="flex flex-col">
+            <span data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface">Solicitud recibida con éxito</span>
+            <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">Un especialista de SmartWater te contactará por WhatsApp en menos de 24 horas para agendar tu demo.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-navy-footer text-on-navy-footer py-10 border-t border-light-outline-variant/20">
+    <div class="max-w-7xl mx-auto px-page-margin md:px-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div class="flex flex-col gap-2 max-w-md">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[22px] text-cyan-accent" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">water_drop</span>
+          <span data-design-text-token="title-lg" class="font-headline text-title-lg text-on-navy-footer">SmartWater</span>
+        </div>
+        <p data-design-text-token="body-sm" class="font-body text-body-sm text-on-navy-footer/80">Software integral para plantas purificadoras y distribuidoras de agua: pedidos, rutas GPS, facturación electrónica y app móvil.</p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+        <a href="#programa-beta" class="inline-flex items-center gap-2.5 px-4 py-2 rounded border border-on-navy-footer/30 bg-light-on-surface hover:bg-light-inverse-surface transition-colors duration-state-change">
+          <span class="material-symbols-outlined text-[22px] text-cyan-accent" aria-hidden="true">shop</span>
+          <div class="flex flex-col">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm text-on-navy-footer/75">Disponible en</span>
+            <span data-design-text-token="label-lg" class="font-label text-label-lg text-on-navy-footer">Google Play</span>
+          </div>
+        </a>
+        <div class="flex flex-col sm:items-end gap-1">
+          <span data-design-text-token="body-sm" class="font-body text-body-sm text-on-navy-footer/75">© 2026 SmartWater</span>
+          <span data-design-text-token="label-sm" class="font-label text-label-sm text-on-navy-footer/60">Política de Privacidad • Términos</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var form = document.getElementById('beta-form');
+      var confirmation = document.getElementById('beta-confirmation');
+      if (form && confirmation) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          confirmation.classList.remove('hidden');
+          form.reset();
+        });
+      }
+    })();
+  </script>
+
+
+</body></html>

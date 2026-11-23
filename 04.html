@@ -1,0 +1,355 @@
+<!DOCTYPE html><html lang="es" class="scroll-smooth"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Concept: Minimal Kinetic Scroll — SmartWater</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pure: '#FFFFFF',
+            mist: '#F5F7FA',
+            ink: '#0A0F1A',
+            slate: '#526071',
+            hairline: '#E2E8F0',
+            azure: '#0057FF',
+            'on-azure': '#FFFFFF',
+          },
+          fontFamily: {
+            display: ['"Manrope"', 'sans-serif'],
+            body: ['"Manrope"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      overflow: hidden;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+
+    /* Expansive scroll reveal classes */
+    .reveal-section {
+      opacity: 0;
+      transform: translateY(56px) scale(0.97);
+      transition: opacity 900ms cubic-bezier(0.16, 1, 0.3, 1), transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-section.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .reveal-row {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 750ms cubic-bezier(0.16, 1, 0.3, 1), transform 750ms cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-row.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-line {
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 1000ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-line.is-visible {
+      transform: scaleX(1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal-section, .reveal-row, .reveal-line {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-pure text-ink font-body antialiased min-h-[1024px] flex flex-col" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress" class="fixed top-0 left-0 h-0.5 bg-azure z-50 w-0" aria-hidden="true"></div>
+
+  <!-- Minimalist Sticky Header -->
+  <header class="sticky top-0 z-40 bg-pure/90 border-b border-hairline">
+    <div class="max-w-6xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between gap-4">
+      <a href="#" class="flex items-center gap-2.5">
+        <span class="material-symbols-outlined text-[22px] text-azure" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">water_drop</span>
+        <span class="font-display font-bold text-lg tracking-tight text-ink">SmartWater</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-10 text-sm text-slate" aria-label="Navegación principal">
+        <a href="#manifiesto" class="hover:text-ink transition-colors">Velocidad</a>
+        <a href="#sistema" class="hover:text-ink transition-colors">Sistema</a>
+        <a href="#metricas" class="hover:text-ink transition-colors">Impacto</a>
+        <a href="#beta" class="hover:text-ink transition-colors">Beta</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-hairline bg-pure text-ink text-sm font-medium hover:border-ink transition-colors">
+          <span class="material-symbols-outlined text-[16px]" aria-hidden="true">arrow_back</span>
+          <span>Volver al menú</span>
+        </a>
+        <a href="#beta" class="px-5 py-2 rounded-full bg-ink text-pure text-sm font-semibold hover:bg-azure transition-colors">
+          Solicitar Beta
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1">
+
+    <!-- Minimalist Hero -->
+    <section class="max-w-6xl mx-auto px-6 md:px-12 pt-20 pb-24 flex flex-col items-center text-center gap-8">
+      <span class="font-mono text-xs uppercase tracking-widest text-azure">
+        SmartWater OS • Edición 2026
+      </span>
+
+      <h1 class="font-display font-extrabold text-5xl md:text-7xl tracking-tight leading-[1.05] text-ink max-w-4xl text-balance">
+        Menos fricción. Más agua entregada.
+      </h1>
+
+      <p class="text-lg md:text-xl text-slate max-w-2xl leading-relaxed text-pretty">
+        Un sistema operativo silencioso para distribuidoras de agua: rutas optimizadas por GPS, app móvil para tus clientes y facturación electrónica automática.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+        <a href="#beta" class="px-8 py-4 rounded-full bg-azure text-on-azure font-semibold text-sm hover:opacity-90 transition-opacity">
+          Unirse al Programa Beta
+        </a>
+        <a href="#manifiesto" class="px-7 py-4 rounded-full border border-hairline text-ink font-semibold text-sm hover:border-ink transition-colors">
+          Explorar flujo
+        </a>
+      </div>
+
+      <!-- Scroll-Linked Parallax Visual Card -->
+      <div id="hero-parallax" class="w-full max-w-4xl mt-10 bg-mist rounded-2xl border border-hairline p-6 md:p-10 transition-transform duration-150 ease-out">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+          <div class="bg-pure rounded-xl p-5 border border-hairline flex flex-col justify-between gap-4">
+            <span class="font-mono text-xs text-slate">01 / PEDIDOS APP</span>
+            <div class="font-display font-bold text-3xl text-ink tabular-nums">312</div>
+            <span class="text-xs text-azure font-medium">Sin llamadas telefónicas</span>
+          </div>
+          <div class="bg-pure rounded-xl p-5 border border-hairline flex flex-col justify-between gap-4">
+            <span class="font-mono text-xs text-slate">02 / RUTA ACTIVA</span>
+            <div class="font-display font-bold text-3xl text-ink tabular-nums">14.2 km</div>
+            <span class="text-xs text-azure font-medium">Secuencia optimizada</span>
+          </div>
+          <div class="bg-pure rounded-xl p-5 border border-hairline flex flex-col justify-between gap-4">
+            <span class="font-mono text-xs text-slate">03 / CORTE DIARIO</span>
+            <div class="font-display font-bold text-3xl text-ink tabular-nums">$48,250</div>
+            <span class="text-xs text-azure font-medium">Facturación al instante</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expansive Scroll Statement -->
+    <section id="manifiesto" class="bg-mist border-y border-hairline py-24 md:py-32">
+      <div class="max-w-5xl mx-auto px-6 md:px-12 reveal-section">
+        <span class="font-mono text-xs uppercase tracking-widest text-azure block mb-4">El cambio</span>
+        <h2 class="font-display font-bold text-3xl md:text-5xl leading-tight text-ink text-balance">
+          De cuatro horas ordenando libretas cada mañana, a doce segundos para despachar toda tu flota.
+        </h2>
+        <div class="h-px bg-ink/20 w-full mt-12 reveal-line"></div>
+      </div>
+    </section>
+
+    <!-- Staggered Scroll-Reveal Capabilities List -->
+    <section id="sistema" class="py-24 md:py-32 max-w-6xl mx-auto px-6 md:px-12 w-full">
+      <div class="mb-14 reveal-section">
+        <span class="font-mono text-xs uppercase tracking-widest text-azure">Arquitectura esencial</span>
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mt-2">Cuatro piezas. Cero ruido.</h2>
+      </div>
+
+      <div class="flex flex-col divide-y divide-hairline border-y border-hairline">
+        <div class="py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 items-center reveal-row">
+          <span class="md:col-span-2 font-mono text-sm text-azure">01</span>
+          <h3 class="md:col-span-4 font-display font-bold text-xl text-ink">Rutas Inteligentes</h3>
+          <p class="md:col-span-6 text-base text-slate">Ordena automáticamente cada entrega por proximidad GPS para eliminar kilómetros muertos y ahorrar combustible.</p>
+        </div>
+
+        <div class="py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 items-center reveal-row" style="transition-delay: 100ms;">
+          <span class="md:col-span-2 font-mono text-sm text-azure">02</span>
+          <h3 class="md:col-span-4 font-display font-bold text-xl text-ink">App Exclusiva de Pedidos</h3>
+          <p class="md:col-span-6 text-base text-slate">Tus clientes solicitan garrafones en dos toques desde su celular, sin esperar respuesta en WhatsApp.</p>
+        </div>
+
+        <div class="py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 items-center reveal-row" style="transition-delay: 200ms;">
+          <span class="md:col-span-2 font-mono text-sm text-azure">03</span>
+          <h3 class="md:col-span-4 font-display font-bold text-xl text-ink">Control de Envases</h3>
+          <p class="md:col-span-6 text-base text-slate">Inventario en tiempo real de garrafones llenos, vacíos y prestados en cada camión y comercio.</p>
+        </div>
+
+        <div class="py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 items-center reveal-row" style="transition-delay: 300ms;">
+          <span class="md:col-span-2 font-mono text-sm text-azure">04</span>
+          <h3 class="md:col-span-4 font-display font-bold text-xl text-ink">Finanzas y Facturación</h3>
+          <p class="md:col-span-6 text-base text-slate">Comprobantes fiscales automáticos, cortes de caja por repartidor y seguimiento de cuentas por cobrar.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scroll-Triggered Animated Metrics -->
+    <section id="metricas" class="bg-ink text-pure py-24 md:py-32">
+      <div class="max-w-6xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-12 reveal-section">
+        <div class="flex flex-col gap-2">
+          <span class="font-display font-extrabold text-5xl md:text-6xl text-pure tabular-nums" data-count-target="28" data-count-prefix="-" data-count-suffix="%">-28%</span>
+          <span class="text-sm text-hairline/75">Consumo mensual de combustible en flota</span>
+        </div>
+        <div class="flex flex-col gap-2">
+          <span class="font-display font-extrabold text-5xl md:text-6xl text-pure tabular-nums" data-count-target="98" data-count-prefix data-count-suffix="%">98%</span>
+          <span class="text-sm text-hairline/75">Entregas completadas en la ventana prometida</span>
+        </div>
+        <div class="flex flex-col gap-2">
+          <span class="font-display font-extrabold text-5xl md:text-6xl text-pure tabular-nums" data-count-target="2" data-count-prefix data-count-suffix="x">2x</span>
+          <span class="text-sm text-hairline/75">Capacidad operativa sin contratar más personal</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Minimalist Beta Form -->
+    <section id="beta" class="py-24 md:py-32 bg-pure">
+      <div class="max-w-2xl mx-auto px-6 md:px-12 reveal-section">
+        <div class="text-center flex flex-col gap-3 mb-10">
+          <span class="font-mono text-xs uppercase tracking-widest text-azure">Acceso Anticipado</span>
+          <h2 class="font-display font-bold text-3xl md:text-4xl text-ink">Solicita tu lugar en la Beta</h2>
+          <p class="text-base text-slate">Implementación personalizada para tu planta distribuidora.</p>
+        </div>
+
+        <form id="minimal-form" class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <label class="flex flex-col gap-1.5">
+            <span class="text-xs font-semibold text-ink">Nombre completo</span>
+            <input type="text" required placeholder="Carlos Mendoza" class="rounded-lg border border-hairline bg-mist/60 px-4 py-3 text-sm text-ink placeholder:text-slate/60 focus:border-azure focus:ring-1 focus:ring-azure focus:outline-none">
+          </label>
+          <label class="flex flex-col gap-1.5">
+            <span class="text-xs font-semibold text-ink">Distribuidora</span>
+            <input type="text" required placeholder="Purificadora Agua Clara" class="rounded-lg border border-hairline bg-mist/60 px-4 py-3 text-sm text-ink placeholder:text-slate/60 focus:border-azure focus:ring-1 focus:ring-azure focus:outline-none">
+          </label>
+          <label class="flex flex-col gap-1.5">
+            <span class="text-xs font-semibold text-ink">Ciudad</span>
+            <input type="text" required placeholder="Monterrey" class="rounded-lg border border-hairline bg-mist/60 px-4 py-3 text-sm text-ink placeholder:text-slate/60 focus:border-azure focus:ring-1 focus:ring-azure focus:outline-none">
+          </label>
+          <label class="flex flex-col gap-1.5">
+            <span class="text-xs font-semibold text-ink">WhatsApp</span>
+            <input type="tel" required placeholder="+52 81 1234 5678" class="rounded-lg border border-hairline bg-mist/60 px-4 py-3 text-sm text-ink placeholder:text-slate/60 focus:border-azure focus:ring-1 focus:ring-azure focus:outline-none">
+          </label>
+          <div class="sm:col-span-2 pt-2">
+            <button type="submit" class="w-full py-3.5 rounded-full bg-ink text-pure font-semibold text-sm hover:bg-azure transition-colors">
+              Solicitar acceso Beta
+            </button>
+          </div>
+        </form>
+
+        <div id="minimal-confirm" class="hidden mt-5 p-4 rounded-xl bg-mist border border-azure/30 text-sm text-ink text-center font-medium">
+          Solicitud enviada. Te contactaremos por WhatsApp en menos de 24 horas.
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-hairline py-8 px-6 md:px-12 bg-pure">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate">
+      <span class="font-display font-bold text-ink">SmartWater</span>
+      <span>© 2026 SmartWater • Disponible en Google Play</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var progressBar = document.getElementById('scroll-progress');
+      var heroParallax = document.getElementById('hero-parallax');
+
+      function onScroll() {
+        var scrollTop = window.scrollY || document.documentElement.scrollTop;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (progressBar && docHeight > 0) {
+          progressBar.style.width = Math.min(100, (scrollTop / docHeight) * 100) + '%';
+        }
+        if (heroParallax && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          var shift = Math.min(48, scrollTop * 0.08);
+          var scale = Math.max(0.96, 1 - scrollTop * 0.00012);
+          heroParallax.style.transform = 'translateY(' + shift + 'px) scale(' + scale + ')';
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      var revealTargets = document.querySelectorAll('.reveal-section, .reveal-row, .reveal-line');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+
+        revealTargets.forEach(function (el) {
+          observer.observe(el);
+        });
+      } else {
+        revealTargets.forEach(function (el) {
+          el.classList.add('is-visible');
+        });
+      }
+
+      // Animated counters on scroll
+      var counters = document.querySelectorAll('[data-count-target]');
+      if ('IntersectionObserver' in window && counters.length) {
+        var counterObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var el = entry.target;
+            var target = parseInt(el.getAttribute('data-count-target'), 10);
+            var prefix = el.getAttribute('data-count-prefix') || '';
+            var suffix = el.getAttribute('data-count-suffix') || '';
+            var start = 0;
+            var duration = 900;
+            var startTime = null;
+
+            function step(ts) {
+              if (!startTime) startTime = ts;
+              var progress = Math.min(1, (ts - startTime) / duration);
+              var eased = 1 - Math.pow(1 - progress, 3);
+              var val = Math.round(start + (target - start) * eased);
+              el.textContent = prefix + val + suffix;
+              if (progress < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+            counterObserver.unobserve(el);
+          });
+        }, { threshold: 0.3 });
+
+        counters.forEach(function (c) { counterObserver.observe(c); });
+      }
+
+      var form = document.getElementById('minimal-form');
+      var confirmBox = document.getElementById('minimal-confirm');
+      if (form && confirmBox) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          confirmBox.classList.remove('hidden');
+          form.reset();
+        });
+      }
+    })();
+  </script>
+
+
+</body></html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html><html lang="es" class="scroll-smooth"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Concept: Dark Telemetry Command — SmartWater</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#070B14',
+            panel: '#0F172A',
+            'panel-elevated': '#162033',
+            'panel-border': '#263449',
+            cyan: '#22D3EE',
+            'on-cyan': '#04101B',
+            amber: '#F59E0B',
+            'on-amber': '#1A1000',
+            crimson: '#F87171',
+            emerald: '#34D399',
+            ink: '#F8FAFC',
+            'ink-muted': '#94A3B8',
+          },
+          fontFamily: {
+            display: ['"Space Grotesk"', 'sans-serif'],
+            body: ['"Inter"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      overflow: hidden;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-obsidian text-ink font-body antialiased min-h-[1024px] flex flex-col" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+  <!-- Command Top Bar -->
+  <header class="sticky top-0 z-40 bg-obsidian/95 border-b border-panel-border">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between gap-4">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded bg-cyan text-on-cyan flex items-center justify-center">
+          <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">water_drop</span>
+        </div>
+        <span class="font-display font-bold text-lg tracking-tight text-ink">SMARTWATER</span>
+        <span class="hidden sm:inline-block font-mono text-xs px-2 py-0.5 rounded bg-panel-elevated text-cyan border border-panel-border">TELEMETRY v2.4</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm text-ink-muted" aria-label="Navegación principal">
+        <a href="#simulador" class="hover:text-cyan transition-colors">Simulador de Rutas</a>
+        <a href="#capacidades" class="hover:text-cyan transition-colors">Arquitectura</a>
+        <a href="#acceso-beta" class="hover:text-cyan transition-colors">Acceso Piloto</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded border border-panel-border bg-panel text-ink font-display font-medium text-sm hover:border-cyan/60 transition-colors">
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_back</span>
+          <span>Volver al menú</span>
+        </a>
+        <a href="#acceso-beta" class="px-5 py-2.5 rounded bg-cyan text-on-cyan font-display font-semibold text-sm hover:opacity-90 transition-opacity">
+          Activar Beta
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1">
+
+    <!-- Dark Command Hero with Interactive ROI Calculator -->
+    <section class="py-14 md:py-20 border-b border-panel-border bg-gradient-to-b from-panel/60 to-obsidian">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7 flex flex-col items-start gap-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-panel-elevated border border-panel-border text-xs font-mono text-cyan">
+            <span>PILOTO OPERATIVO 2026 • CUPOS LIMITADOS</span>
+          </div>
+
+          <h1 class="font-display font-bold text-4xl md:text-5xl leading-tight tracking-tight text-ink text-balance">
+            Deja de quemar diésel en rutas ciegas. Toma el control telemétrico de tu planta.
+          </h1>
+
+          <p class="text-base md:text-lg text-ink-muted max-w-prose text-pretty">
+            Cada camión sin secuencia óptima pierde hasta 2 horas diarias y 28% de combustible. Conecta tu despacho web, facturación CFDI y app de pedidos en una sola consola en tiempo real.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 pt-1">
+            <a href="#acceso-beta" class="inline-flex items-center gap-2 px-6 py-3.5 rounded bg-cyan text-on-cyan font-display font-semibold text-sm hover:opacity-90 transition-opacity">
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">terminal</span>
+              <span>Solicitar Acceso al Piloto</span>
+            </a>
+            <a href="#simulador" class="inline-flex items-center gap-2 px-5 py-3.5 rounded border border-panel-border bg-panel text-ink font-display font-medium text-sm hover:border-cyan/60 transition-colors">
+              <span>Probar Simulador de Rutas</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Interactive Fleet ROI Calculator Card -->
+        <div class="lg:col-span-5 bg-panel rounded-xl border border-panel-border p-6 md:p-7 flex flex-col gap-6 shadow-2xl">
+          <div class="flex items-center justify-between border-b border-panel-border pb-4">
+            <div>
+              <span class="font-mono text-xs text-cyan block">CALCULADORA DE IMPACTO</span>
+              <h2 class="font-display font-semibold text-lg text-ink">¿Cuánto pierdes sin optimización?</h2>
+            </div>
+            <span class="material-symbols-outlined text-[24px] text-amber" aria-hidden="true">speed</span>
+          </div>
+
+          <div class="flex flex-col gap-3">
+            <div class="flex items-center justify-between">
+              <label for="truck-slider" class="text-sm text-ink-muted">Vehículos en tu flota</label>
+              <span id="truck-count" class="font-mono text-lg font-semibold text-cyan tabular-nums">6 unidades</span>
+            </div>
+            <input id="truck-slider" type="range" min="2" max="25" value="6" class="w-full accent-cyan bg-panel-elevated rounded-lg cursor-pointer">
+            <div class="flex justify-between font-mono text-xs text-ink-muted">
+              <span>2</span>
+              <span>12</span>
+              <span>25</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 pt-2">
+            <div class="bg-panel-elevated rounded-lg p-4 border border-panel-border">
+              <span class="font-mono text-xs text-ink-muted block">Ahorro combustible / mes</span>
+              <span id="fuel-saved" class="font-mono text-2xl font-bold text-emerald tabular-nums">$19,800</span>
+            </div>
+            <div class="bg-panel-elevated rounded-lg p-4 border border-panel-border">
+              <span class="font-mono text-xs text-ink-muted block">Horas recuperadas / mes</span>
+              <span id="hours-saved" class="font-mono text-2xl font-bold text-amber tabular-nums">264 hrs</span>
+            </div>
+          </div>
+
+          <p class="font-mono text-xs text-ink-muted border-t border-panel-border pt-3">
+            Estimación basada en un ahorro promedio del 28% en kilometraje muerto.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Full-Bleed Plant Telemetry Banner -->
+    <section class="relative min-h-80 border-b border-panel-border overflow-hidden">
+      <img src="https://lh3.googleusercontent.com/aida/ALJJyrCILVY5lgj-EnxZ9Kr01RmWujqNw3WZlPRDHj6b1Ss8e4tFAtgTDL7x89F7399Vf19kz_f3OMRiHavtXu93HydCe6uZulOz-KEDqyIGk8zK3w0HLr3SaQoYP_9weFeBuuQoiP577tgJJkosNV4FUA95sdiJ_aMgEVrnsWBOsDQtyDYeAfo0ECrBCoSmCNWb-d43m5g9KyhVx6SaRdgohdcCBMkCbCFana8cMIfPPieGuY88fi_S9ay1M5XNCKAIcVnS" alt="Planta purificadora y flota de reparto iluminada al anochecer" class="w-full h-full object-cover absolute inset-0 opacity-45">
+      <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20 grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+        <div class="md:col-span-2 flex flex-col gap-3">
+          <span class="font-mono text-xs text-cyan">VISIBILIDAD TOTAL DE PLANTA A DOMICILIO</span>
+          <h2 class="font-display font-bold text-3xl md:text-4xl text-ink text-balance">
+            De hojas impresas y llamadas perdidas a telemetría en tiempo real.
+          </h2>
+        </div>
+        <div class="bg-obsidian/90 border border-panel-border rounded-xl p-5 flex flex-col gap-3">
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-xs text-ink-muted">ESTADO DE FLOTA</span>
+            <span class="font-mono text-xs text-emerald">EN LÍNEA</span>
+          </div>
+          <div class="font-mono text-3xl font-bold text-ink tabular-nums">98.4%</div>
+          <p class="text-xs text-ink-muted">Entregas completadas dentro de la ventana prometida al cliente.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Dispatch Simulator -->
+    <section id="simulador" class="py-16 md:py-20 border-b border-panel-border bg-panel/30">
+      <div class="max-w-6xl mx-auto px-6 md:px-12 flex flex-col gap-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <span class="font-mono text-xs text-cyan">SIMULADOR DE DESPACHO</span>
+            <h2 class="font-display font-bold text-3xl text-ink">Compara la ruta de tus repartidores</h2>
+          </div>
+          <div class="inline-flex rounded-lg bg-panel p-1 border border-panel-border" role="tablist" aria-label="Modo de ruta">
+            <button id="tab-before" type="button" role="tab" aria-selected="false" class="px-4 py-2 rounded font-display text-sm font-medium text-ink-muted hover:text-ink transition-colors">
+              Sin Optimización
+            </button>
+            <button id="tab-after" type="button" role="tab" aria-selected="true" class="px-4 py-2 rounded font-display text-sm font-semibold bg-cyan text-on-cyan transition-colors">
+              Con SmartWater
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-panel rounded-xl border border-panel-border p-6 md:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 bg-obsidian rounded-lg border border-panel-border p-4">
+            <svg id="svg-after" viewBox="0 0 420 200" class="w-full h-56" aria-label="Ruta optimizada por SmartWater">
+              <path d="M40 40 L140 30 L260 45 L360 80 L330 160 L190 165 L65 140 Z" stroke="#22D3EE" stroke-width="3" fill="none" stroke-linejoin="round"></path>
+              <circle cx="40" cy="40" r="6" fill="#34D399"></circle>
+              <circle cx="140" cy="30" r="5" fill="#22D3EE"></circle>
+              <circle cx="260" cy="45" r="5" fill="#22D3EE"></circle>
+              <circle cx="360" cy="80" r="5" fill="#22D3EE"></circle>
+              <circle cx="330" cy="160" r="5" fill="#22D3EE"></circle>
+              <circle cx="190" cy="165" r="5" fill="#22D3EE"></circle>
+              <circle cx="65" cy="140" r="5" fill="#22D3EE"></circle>
+            </svg>
+            <svg id="svg-before" viewBox="0 0 420 200" class="w-full h-56 hidden" aria-label="Ruta desordenada sin optimización">
+              <path d="M40 40 L330 160 L140 30 L65 140 L360 80 L190 165 L260 45 L40 40" stroke="#F87171" stroke-width="2.5" fill="none"></path>
+              <circle cx="40" cy="40" r="6" fill="#F59E0B"></circle>
+              <circle cx="140" cy="30" r="5" fill="#F87171"></circle>
+              <circle cx="260" cy="45" r="5" fill="#F87171"></circle>
+              <circle cx="360" cy="80" r="5" fill="#F87171"></circle>
+              <circle cx="330" cy="160" r="5" fill="#F87171"></circle>
+              <circle cx="190" cy="165" r="5" fill="#F87171"></circle>
+              <circle cx="65" cy="140" r="5" fill="#F87171"></circle>
+            </svg>
+          </div>
+
+          <div class="lg:col-span-5 flex flex-col gap-4">
+            <div id="sim-badge" class="inline-flex items-center gap-2 self-start px-3 py-1 rounded bg-emerald/15 text-emerald font-mono text-xs">
+              <span>RUTA SECUENCIADA POR GPS</span>
+            </div>
+            <h3 id="sim-title" class="font-display font-bold text-2xl text-ink">38.4 km totales • 4h 10m en calle</h3>
+            <p id="sim-desc" class="text-sm text-ink-muted">
+              El algoritmo agrupa clientes por zona y horario de recepción, eliminando cruces innecesarios y regresos a planta a medio día.
+            </p>
+            <div class="grid grid-cols-2 gap-3 pt-2 font-mono">
+              <div class="bg-panel-elevated p-3 rounded border border-panel-border">
+                <span class="text-xs text-ink-muted block">Paradas / hora</span>
+                <span id="sim-stops" class="text-lg font-bold text-cyan">14.2</span>
+              </div>
+              <div class="bg-panel-elevated p-3 rounded border border-panel-border">
+                <span class="text-xs text-ink-muted block">Desperdicio km</span>
+                <span id="sim-waste" class="text-lg font-bold text-emerald">0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Asymmetric Bento Grid Architecture -->
+    <section id="capacidades" class="py-16 md:py-20 border-b border-panel-border">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col gap-10">
+        <div>
+          <span class="font-mono text-xs text-cyan">ARQUITECTURA MODULAR</span>
+          <h2 class="font-display font-bold text-3xl text-ink">Seis sistemas sincronizados en una sola consola</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
+          <!-- Wide Bento 1 -->
+          <div class="md:col-span-7 bg-panel rounded-xl border border-panel-border p-6 flex flex-col justify-between gap-4">
+            <div class="flex items-center justify-between">
+              <span class="material-symbols-outlined text-[26px] text-cyan" aria-hidden="true">person_pin_circle</span>
+              <span class="font-mono text-xs text-ink-muted">MÓDULO 01</span>
+            </div>
+            <div>
+              <h3 class="font-display font-bold text-xl text-ink mb-1">Geolocalización de Clientes y Precios</h3>
+              <p class="text-sm text-ink-muted">Coordenadas exactas por domicilio o comercio, historial de garrafones prestados y tarifas diferenciadas por volumen.</p>
+            </div>
+          </div>
+
+          <!-- Narrow Bento 2 -->
+          <div class="md:col-span-5 bg-panel rounded-xl border border-panel-border p-6 flex flex-col justify-between gap-4">
+            <div class="flex items-center justify-between">
+              <span class="material-symbols-outlined text-[26px] text-amber" aria-hidden="true">local_shipping</span>
+              <span class="font-mono text-xs text-ink-muted">MÓDULO 02</span>
+            </div>
+            <div>
+              <h3 class="font-display font-bold text-xl text-ink mb-1">Telemetría de Repartidores</h3>
+              <p class="text-sm text-ink-muted">Seguimiento GPS en vivo, alertas de desvío y control de envases vacíos vs. llenos por unidad.</p>
+            </div>
+          </div>
+
+          <!-- Narrow Bento 3 -->
+          <div class="md:col-span-5 bg-panel rounded-xl border border-panel-border p-6 flex flex-col justify-between gap-4">
+            <div class="flex items-center justify-between">
+              <span class="material-symbols-outlined text-[26px] text-emerald" aria-hidden="true">smartphone</span>
+              <span class="font-mono text-xs text-ink-muted">MÓDULO 03</span>
+            </div>
+            <div>
+              <h3 class="font-display font-bold text-xl text-ink mb-1">App Exclusiva de Pedidos</h3>
+              <p class="text-sm text-ink-muted">Tus clientes piden agua en 2 toques desde Android, reduciendo la carga de WhatsApp y llamadas.</p>
+            </div>
+          </div>
+
+          <!-- Wide Bento 4 -->
+          <div class="md:col-span-7 bg-panel rounded-xl border border-panel-border p-6 flex flex-col justify-between gap-4">
+            <div class="flex items-center justify-between">
+              <span class="material-symbols-outlined text-[26px] text-cyan" aria-hidden="true">receipt_long</span>
+              <span class="font-mono text-xs text-ink-muted">MÓDULO 04</span>
+            </div>
+            <div>
+              <h3 class="font-display font-bold text-xl text-ink mb-1">Facturación Electrónica, Caja y Cuentas por Cobrar</h3>
+              <p class="text-sm text-ink-muted">Timbrado automático de facturas, liquidación diaria de choferes y seguimiento de créditos comerciales sin Excel.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dark Beta Access Form -->
+    <section id="acceso-beta" class="py-16 md:py-20 bg-panel">
+      <div class="max-w-3xl mx-auto px-6 md:px-12">
+        <div class="bg-obsidian rounded-xl border border-panel-border p-8 md:p-10 flex flex-col gap-6">
+          <div>
+            <span class="font-mono text-xs text-cyan">REGISTRO PILOTO</span>
+            <h2 class="font-display font-bold text-2xl md:text-3xl text-ink mt-1">Solicita tu cupo en la Beta de SmartWater</h2>
+            <p class="text-sm text-ink-muted mt-1">Configuración asistida para plantas con 2 o más vehículos de reparto.</p>
+          </div>
+
+          <form id="telemetry-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <label class="flex flex-col gap-1.5">
+              <span class="font-mono text-xs text-ink-muted">Nombre completo</span>
+              <input type="text" required placeholder="Carlos Mendoza" class="rounded bg-panel border border-panel-border px-3.5 py-2.5 text-sm text-ink placeholder:text-ink-muted/60 focus:border-cyan focus:ring-1 focus:ring-cyan focus:outline-none">
+            </label>
+            <label class="flex flex-col gap-1.5">
+              <span class="font-mono text-xs text-ink-muted">Distribuidora / Planta</span>
+              <input type="text" required placeholder="Purificadora Agua Clara" class="rounded bg-panel border border-panel-border px-3.5 py-2.5 text-sm text-ink placeholder:text-ink-muted/60 focus:border-cyan focus:ring-1 focus:ring-cyan focus:outline-none">
+            </label>
+            <label class="flex flex-col gap-1.5">
+              <span class="font-mono text-xs text-ink-muted">Ciudad</span>
+              <input type="text" required placeholder="Monterrey, NL" class="rounded bg-panel border border-panel-border px-3.5 py-2.5 text-sm text-ink placeholder:text-ink-muted/60 focus:border-cyan focus:ring-1 focus:ring-cyan focus:outline-none">
+            </label>
+            <label class="flex flex-col gap-1.5">
+              <span class="font-mono text-xs text-ink-muted">WhatsApp de contacto</span>
+              <input type="tel" required placeholder="+52 81 1234 5678" class="rounded bg-panel border border-panel-border px-3.5 py-2.5 text-sm text-ink placeholder:text-ink-muted/60 focus:border-cyan focus:ring-1 focus:ring-cyan focus:outline-none">
+            </label>
+            <div class="md:col-span-2 pt-2">
+              <button type="submit" class="w-full py-3.5 rounded bg-cyan text-on-cyan font-display font-bold text-sm hover:opacity-90 transition-opacity">
+                Desplegar Demo Personalizada
+              </button>
+            </div>
+          </form>
+
+          <div id="telemetry-confirm" class="hidden p-4 rounded bg-emerald/15 border border-emerald/40 text-sm text-emerald font-mono">
+            [OK] Solicitud registrada. Nuestro equipo de ingeniería te contactará por WhatsApp.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-obsidian border-t border-panel-border py-8 px-6 md:px-12">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-ink-muted">
+      <span>SMARTWATER TELEMETRY PLATFORM © 2026</span>
+      <span>ANDROID APP EN GOOGLE PLAY • PANEL WEB EN LA NUBE</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var slider = document.getElementById('truck-slider');
+      var countEl = document.getElementById('truck-count');
+      var fuelEl = document.getElementById('fuel-saved');
+      var hoursEl = document.getElementById('hours-saved');
+      if (slider && countEl && fuelEl && hoursEl) {
+        slider.addEventListener('input', function () {
+          var n = parseInt(slider.value, 10);
+          countEl.textContent = n + ' unidades';
+          fuelEl.textContent = '$' + (n * 3300).toLocaleString('es-MX');
+          hoursEl.textContent = (n * 44) + ' hrs';
+        });
+      }
+
+      var tabBefore = document.getElementById('tab-before');
+      var tabAfter = document.getElementById('tab-after');
+      var svgBefore = document.getElementById('svg-before');
+      var svgAfter = document.getElementById('svg-after');
+      var simBadge = document.getElementById('sim-badge');
+      var simTitle = document.getElementById('sim-title');
+      var simDesc = document.getElementById('sim-desc');
+      var simStops = document.getElementById('sim-stops');
+      var simWaste = document.getElementById('sim-waste');
+
+      if (tabBefore && tabAfter) {
+        tabBefore.addEventListener('click', function () {
+          svgBefore.classList.remove('hidden');
+          svgAfter.classList.add('hidden');
+          tabBefore.className = 'px-4 py-2 rounded font-display text-sm font-semibold bg-crimson text-on-cyan transition-colors';
+          tabAfter.className = 'px-4 py-2 rounded font-display text-sm font-medium text-ink-muted hover:text-ink transition-colors';
+          simBadge.className = 'inline-flex items-center gap-2 self-start px-3 py-1 rounded bg-crimson/15 text-crimson font-mono text-xs';
+          simBadge.textContent = 'RUTA MANUAL DESORDENADA';
+          simTitle.textContent = '53.6 km totales • 6h 25m en calle';
+          simDesc.textContent = 'Sin secuencia automática, los camiones cruzan la ciudad varias veces, consumen más combustible y dejan pedidos sin entregar.';
+          simStops.textContent = '8.4';
+          simWaste.textContent = '+28%';
+          simWaste.className = 'text-lg font-bold text-crimson';
+        });
+
+        tabAfter.addEventListener('click', function () {
+          svgAfter.classList.remove('hidden');
+          svgBefore.classList.add('hidden');
+          tabAfter.className = 'px-4 py-2 rounded font-display text-sm font-semibold bg-cyan text-on-cyan transition-colors';
+          tabBefore.className = 'px-4 py-2 rounded font-display text-sm font-medium text-ink-muted hover:text-ink transition-colors';
+          simBadge.className = 'inline-flex items-center gap-2 self-start px-3 py-1 rounded bg-emerald/15 text-emerald font-mono text-xs';
+          simBadge.textContent = 'RUTA SECUENCIADA POR GPS';
+          simTitle.textContent = '38.4 km totales • 4h 10m en calle';
+          simDesc.textContent = 'El algoritmo agrupa clientes por zona y horario de recepción, eliminando cruces innecesarios y regresos a planta a medio día.';
+          simStops.textContent = '14.2';
+          simWaste.textContent = '0%';
+          simWaste.className = 'text-lg font-bold text-emerald';
+        });
+      }
+
+      var form = document.getElementById('telemetry-form');
+      var confirmBox = document.getElementById('telemetry-confirm');
+      if (form && confirmBox) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          confirmBox.classList.remove('hidden');
+          form.reset();
+        });
+      }
+    })();
+  </script>
+
+
+</body></html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html><html lang="es" class="scroll-smooth"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Concept: Editorial Craft — SmartWater</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FAF7F2',
+            'cream-warm': '#F2ECE1',
+            paper: '#FFFFFF',
+            forest: '#0D3B3E',
+            'on-forest': '#FAF7F2',
+            terracotta: '#B24A24',
+            'on-terracotta': '#FFFFFF',
+            espresso: '#1C1917',
+            'espresso-muted': '#57534E',
+            sand: '#DDD6CA',
+          },
+          fontFamily: {
+            serif: ['"Fraunces"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      overflow: hidden;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-cream text-espresso font-sans antialiased min-h-[1024px] flex flex-col" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+  <!-- Editorial Header -->
+  <header class="border-b border-sand bg-cream/95 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-6 md:px-14 h-20 flex items-center justify-between gap-6">
+      <a href="#" class="flex items-center gap-2.5">
+        <span class="material-symbols-outlined text-[24px] text-forest" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">water_drop</span>
+        <span class="font-serif font-semibold text-2xl text-forest tracking-tight">SmartWater</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-espresso-muted" aria-label="Navegación principal">
+        <a href="#historia" class="hover:text-forest transition-colors">Del pozo a la puerta</a>
+        <a href="#perspectivas" class="hover:text-forest transition-colors">Para tu equipo</a>
+        <a href="#invitacion" class="hover:text-forest transition-colors">Programa Beta</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full border border-sand bg-paper text-forest text-sm font-semibold hover:border-forest transition-colors">
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_back</span>
+          <span>Volver al menú</span>
+        </a>
+        <a href="#invitacion" class="px-5 py-2.5 rounded-full bg-forest text-on-forest text-sm font-semibold hover:opacity-90 transition-opacity">
+          Solicitar invitación
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1">
+
+    <!-- Editorial Split Hero -->
+    <section class="max-w-7xl mx-auto px-6 md:px-14 py-14 md:py-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-6 flex flex-col items-start gap-6">
+        <span class="text-xs font-semibold uppercase tracking-widest text-terracotta">
+          Tecnología humana para plantas purificadoras
+        </span>
+
+        <h1 class="font-serif font-semibold text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-forest text-balance">
+          Menos hojas de cálculo. Más tiempo con tus clientes y tu familia.
+        </h1>
+
+        <p class="text-base md:text-lg text-espresso-muted leading-relaxed max-w-prose text-pretty">
+          Administrar una distribuidora de agua no debería significar cerrar caja a medianoche ni perder pedidos entre mensajes. SmartWater ordena tus rutas, tu facturación y los pedidos de tus clientes con calma y claridad.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a href="#invitacion" class="px-7 py-3.5 rounded-full bg-terracotta text-on-terracotta font-semibold text-sm shadow-sm hover:opacity-90 transition-opacity">
+            Agendar conversación Beta
+          </a>
+          <a href="#historia" class="px-6 py-3.5 rounded-full border border-sand bg-paper text-forest font-semibold text-sm hover:border-forest transition-colors">
+            Conocer cómo trabaja
+          </a>
+        </div>
+
+        <div class="pt-4 border-t border-sand w-full flex items-center gap-6 text-sm text-espresso-muted">
+          <span><strong class="text-forest font-semibold">14 hrs</strong> ahorradas por semana</span>
+          <span><strong class="text-forest font-semibold">0</strong> pedidos perdidos por WhatsApp</span>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6">
+        <div class="rounded-2xl overflow-hidden border border-sand shadow-lg bg-paper p-3">
+          <img src="https://lh3.googleusercontent.com/aida/ALJJyrAeUH8IkCJn1PM-sL9EOW_DR4o2B51x1uJwD94SQhdy9bL6AScFLVwxdINfLi_eh_KSK9KGVJEmDZTEjVBvHLPmsUTo5M2nhAdQXqzly4BNBYmMLJXgBB52XV8smVJCYFILXiVDfAHN6QpVI6xakTtSWdEkJpkI8wb1BJgTLb4cdKsLtvu3rr7aVWo0EIeoFZ4JUkE6Q8LD7JTO4WBD1pURy1cdpSbMDdkO7BRckw2vqJEyvNtgrve0xxQ2u1r8SpZa7w" alt="Dueño de planta purificadora de agua junto a garrafones limpios" class="w-full h-96 md:h-[460px] object-cover rounded-xl">
+        </div>
+      </div>
+    </section>
+
+    <!-- Numbered Narrative Flow: Del pozo a la puerta -->
+    <section id="historia" class="bg-cream-warm border-y border-sand py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-6 md:px-14 flex flex-col gap-12">
+        <div class="max-w-2xl">
+          <span class="text-xs font-semibold uppercase tracking-widest text-terracotta">Tu día, simplificado</span>
+          <h2 class="font-serif font-semibold text-3xl md:text-4xl text-forest mt-2 text-balance">
+            Del pozo a la puerta, sin una sola llamada perdida
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="flex flex-col gap-3 border-t-2 border-forest pt-5">
+            <span class="font-serif text-2xl text-terracotta">01</span>
+            <h3 class="font-serif font-semibold text-xl text-forest">Tu cliente pide sin fricción</h3>
+            <p class="text-sm text-espresso-muted leading-relaxed">Desde su celular, repite su pedido habitual de garrafones en segundos y recibe confirmación al instante.</p>
+          </div>
+
+          <div class="flex flex-col gap-3 border-t-2 border-forest pt-5">
+            <span class="font-serif text-2xl text-terracotta">02</span>
+            <h3 class="font-serif font-semibold text-xl text-forest">La ruta se ordena sola</h3>
+            <p class="text-sm text-espresso-muted leading-relaxed">SmartWater agrupa entregas cercanas por GPS para que tus repartidores terminen antes y gasten menos gasolina.</p>
+          </div>
+
+          <div class="flex flex-col gap-3 border-t-2 border-forest pt-5">
+            <span class="font-serif text-2xl text-terracotta">03</span>
+            <h3 class="font-serif font-semibold text-xl text-forest">Control de envases y caja</h3>
+            <p class="text-sm text-espresso-muted leading-relaxed">Cada entrega registra garrafones retornados, pagos en efectivo, transferencias y créditos comerciales.</p>
+          </div>
+
+          <div class="flex flex-col gap-3 border-t-2 border-forest pt-5">
+            <span class="font-serif text-2xl text-terracotta">04</span>
+            <h3 class="font-serif font-semibold text-xl text-forest">Facturación al día</h3>
+            <p class="text-sm text-espresso-muted leading-relaxed">Emite facturas electrónicas en un clic y consulta la salud financiera de tu distribuidora desde cualquier lugar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Role Perspective Tabs -->
+    <section id="perspectivas" class="py-16 md:py-24 max-w-6xl mx-auto px-6 md:px-14 w-full">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-widest text-terracotta">Diseñado para cada persona</span>
+          <h2 class="font-serif font-semibold text-3xl md:text-4xl text-forest mt-2">¿Cómo cambia tu operación?</h2>
+        </div>
+
+        <div class="flex flex-wrap gap-2" role="tablist" aria-label="Perspectivas de usuario">
+          <button data-role-tab="owner" type="button" class="px-4 py-2 rounded-full text-sm font-semibold bg-forest text-on-forest transition-colors">Dueño de Planta</button>
+          <button data-role-tab="driver" type="button" class="px-4 py-2 rounded-full text-sm font-medium bg-cream-warm text-espresso-muted hover:text-forest transition-colors">Repartidor</button>
+          <button data-role-tab="client" type="button" class="px-4 py-2 rounded-full text-sm font-medium bg-cream-warm text-espresso-muted hover:text-forest transition-colors">Cliente Final</button>
+        </div>
+      </div>
+
+      <div class="bg-paper rounded-2xl border border-sand p-8 md:p-10 shadow-sm grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <div class="md:col-span-7 flex flex-col gap-4">
+          <h3 id="role-title" class="font-serif font-semibold text-2xl text-forest">
+            “Antes cerraba la caja a las 9 de la noche; ahora veo todo en mi teléfono a las 5.”
+          </h3>
+          <p id="role-body" class="text-base text-espresso-muted leading-relaxed">
+            Como dueño, tienes claridad total sobre ventas diarias, cuentas por cobrar, inventario de garrafones y rendimiento de cada ruta sin perseguir libretas ni hojas de Excel.
+          </p>
+        </div>
+        <div class="md:col-span-5 bg-cream-warm rounded-xl p-6 border border-sand flex flex-col gap-3">
+          <span class="text-xs font-semibold uppercase tracking-wider text-terracotta">Beneficio principal</span>
+          <div id="role-metric" class="font-serif font-semibold text-3xl text-forest">-28% en combustible</div>
+          <p id="role-caption" class="text-sm text-espresso-muted">Y corte de caja cuadrado automáticamente al final de cada jornada.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editorial Concierge Beta Form -->
+    <section id="invitacion" class="bg-forest text-on-forest py-16 md:py-24">
+      <div class="max-w-5xl mx-auto px-6 md:px-14 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-5 flex flex-col gap-4">
+          <span class="text-xs font-semibold uppercase tracking-widest text-cream-warm/80">Programa Beta</span>
+          <h2 class="font-serif font-semibold text-3xl md:text-4xl text-on-forest text-balance">
+            Acompañamos la digitalización de tu distribuidora
+          </h2>
+          <p class="text-sm md:text-base text-on-forest/80 leading-relaxed">
+            Buscamos distribuidoras piloto comprometidas con mejorar su servicio. Te ayudamos a cargar tus clientes, rutas y precios sin costo de implementación.
+          </p>
+        </div>
+
+        <div class="lg:col-span-7 bg-paper text-espresso rounded-2xl p-7 md:p-9 shadow-xl">
+          <form id="editorial-form" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <label class="flex flex-col gap-1.5">
+              <span class="text-xs font-semibold text-espresso">Tu nombre</span>
+              <input type="text" required placeholder="Ej. Laura Hernández" class="rounded-lg border border-sand bg-cream/40 px-3.5 py-2.5 text-sm focus:border-forest focus:ring-1 focus:ring-forest focus:outline-none">
+            </label>
+            <label class="flex flex-col gap-1.5">
+              <span class="text-xs font-semibold text-espresso">Nombre de tu purificadora</span>
+              <input type="text" required placeholder="Ej. Agua Manantial" class="rounded-lg border border-sand bg-cream/40 px-3.5 py-2.5 text-sm focus:border-forest focus:ring-1 focus:ring-forest focus:outline-none">
+            </label>
+            <label class="flex flex-col gap-1.5">
+              <span class="text-xs font-semibold text-espresso">Ciudad</span>
+              <input type="text" required placeholder="Ej. Guadalajara" class="rounded-lg border border-sand bg-cream/40 px-3.5 py-2.5 text-sm focus:border-forest focus:ring-1 focus:ring-forest focus:outline-none">
+            </label>
+            <label class="flex flex-col gap-1.5">
+              <span class="text-xs font-semibold text-espresso">Teléfono / WhatsApp</span>
+              <input type="tel" required placeholder="+52 33 1234 5678" class="rounded-lg border border-sand bg-cream/40 px-3.5 py-2.5 text-sm focus:border-forest focus:ring-1 focus:ring-forest focus:outline-none">
+            </label>
+            <div class="sm:col-span-2 pt-2">
+              <button type="submit" class="w-full py-3.5 rounded-full bg-terracotta text-on-terracotta font-semibold text-sm hover:opacity-90 transition-opacity">
+                Solicitar mi lugar en la Beta
+              </button>
+            </div>
+          </form>
+
+          <div id="editorial-confirm" class="hidden mt-4 p-4 rounded-lg bg-cream-warm border border-forest/30 text-sm text-forest font-medium">
+            Gracias. Un asesor de SmartWater te escribirá por WhatsApp hoy mismo para coordinar tu demo.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-cream border-t border-sand py-8 px-6 md:px-14">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-espresso-muted">
+      <span class="font-serif font-semibold text-forest">SmartWater</span>
+      <span>© 2026 SmartWater • App disponible en Google Play</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var roles = {
+        owner: {
+          title: '“Antes cerraba la caja a las 9 de la noche; ahora veo todo en mi teléfono a las 5.”',
+          body: 'Como dueño, tienes claridad total sobre ventas diarias, cuentas por cobrar, inventario de garrafones y rendimiento de cada ruta sin perseguir libretas ni hojas de Excel.',
+          metric: '-28% en combustible',
+          caption: 'Y corte de caja cuadrado automáticamente al final de cada jornada.'
+        },
+        driver: {
+          title: '“Ya no pierdo tiempo buscando direcciones ni adivinando qué calle sigue.”',
+          body: 'Cada repartidor recibe su ruta ordenada en el celular con ubicación GPS exacta del cliente, cantidad de garrafones a entregar y registro rápido de envases vacíos.',
+          metric: '+35% más entregas',
+          caption: 'Sin llamadas constantes a planta para confirmar domicilios.'
+        },
+        client: {
+          title: '“Pido mis garrafones en diez segundos y sé exactamente cuándo llegan.”',
+          body: 'Tus clientes dejan de esperar respuesta en WhatsApp: abren la app de tu distribuidora, eligen su producto y reciben su agua puntualmente.',
+          metric: '2 toques para pedir',
+          caption: 'Mayor recompra y fidelidad frente a la competencia.'
+        }
+      };
+
+      var buttons = document.querySelectorAll('[data-role-tab]');
+      var titleEl = document.getElementById('role-title');
+      var bodyEl = document.getElementById('role-body');
+      var metricEl = document.getElementById('role-metric');
+      var captionEl = document.getElementById('role-caption');
+
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var key = btn.getAttribute('data-role-tab');
+          var data = roles[key];
+          if (!data) return;
+
+          buttons.forEach(function (b) {
+            b.className = 'px-4 py-2 rounded-full text-sm font-medium bg-cream-warm text-espresso-muted hover:text-forest transition-colors';
+          });
+          btn.className = 'px-4 py-2 rounded-full text-sm font-semibold bg-forest text-on-forest transition-colors';
+
+          titleEl.textContent = data.title;
+          bodyEl.textContent = data.body;
+          metricEl.textContent = data.metric;
+          captionEl.textContent = data.caption;
+        });
+      });
+
+      var form = document.getElementById('editorial-form');
+      var confirmBox = document.getElementById('editorial-confirm');
+      if (form && confirmBox) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          confirmBox.classList.remove('hidden');
+          form.reset();
+        });
+      }
+    })();
+  </script>
+
+
+</body></html>
